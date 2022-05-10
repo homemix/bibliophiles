@@ -19,7 +19,8 @@
             rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="{{ url_for('static',filename="css/sb-admin-2.min.css") }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename="css/sb-admin-2.css") }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename="vendor/datatables/dataTables.bootstrap4.min.css") }}" rel="stylesheet">
 
 </head>
 
@@ -45,20 +46,6 @@
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                     <i class="fa fa-bars"></i>
                 </button>
-
-                <!-- Topbar Search -->
-                <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                    <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                               aria-label="Search" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">
-                                <i class="fas fa-search fa-sm"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
 
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -130,7 +117,7 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+                <h1 class="h3 mb-4 text-gray-800">{{ page_title }}</h1>
                 {% block pageContent %}
 
                 {% endblock %}
@@ -192,6 +179,9 @@
 <!-- Custom scripts for all pages-->
 <script src="{{ url_for('static',filename="js/sb-admin-2.min.js") }}"></script>
 
+<script src="{{ url_for('static',filename="vendor/datatables/jquery.dataTables.min.js") }}"></script>
+<script src="{{ url_for('static',filename="vendor/datatables/dataTables.bootstrap4.min.js") }}"></script>
+<script src="{{ url_for('static',filename="js/demo/datatables-demo.js") }}"></script>
 </body>
 
 </html>
