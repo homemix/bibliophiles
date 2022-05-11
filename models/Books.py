@@ -11,7 +11,9 @@ class Books(db.Model):
     author = db.Column(db.String(80), nullable=False)
     published_date = db.Column(db.Date, nullable=False)
     publisher = db.Column(db.String(80), nullable=False)
-    genre_id = db.Column(db.Integer, nullable=False)
+    genre_id = db.Column(db.Integer, db.ForeignKey('UserTypes.id'))
+    Genres = db.relationship("Genres", back_populates="Books")
+    Genres = db.relationship("Reviews", back_populates="Books")
 
     def __init__(self, title, author, genre_id, published_date, publisher):
         self.title = title
