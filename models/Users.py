@@ -2,7 +2,8 @@ from models.database import db
 
 """A class to represent a Users"""
 
-class Users(db.Models):
+
+class Users(db.Model):
     """ Users Model """
     __tablename__ = 'Users'
     id = db.Column(db.Integer, primary_key=True)
@@ -20,7 +21,6 @@ class Users(db.Models):
         self.email = email
         self.UserTypes_id = UserTypes_id
 
-
     def __repr__(self):
         """UserTypes File represention"""
-        return  vars(Users)
+        return vars(Users)
