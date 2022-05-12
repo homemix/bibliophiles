@@ -2,7 +2,8 @@ from models.database import db
 
 """A class to represent a reviews"""
 
-class Reviews(db.Models):
+
+class Reviews(db.Model):
     """ Reviews Model """
     __tablename__ = 'Reviews'
     id = db.Column(db.Integer, primary_key=True)
@@ -11,7 +12,6 @@ class Reviews(db.Models):
     books_id = db.Column(db.Integer, db.ForeignKey('UserTypes.id'))
     Reviews = db.relationship("Books", back_populates="Reviews")
 
-    
     user_id = db.Column(db.Integer, db.ForeignKey('UserTypes.id'))
     user_id = db.relationship("Users", back_populates="reviews")
 
@@ -23,4 +23,3 @@ class Reviews(db.Models):
 
     def __repr__(self):
         return vars(Reviews)
-        

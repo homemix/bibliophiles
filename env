@@ -1,0 +1,5 @@
+MY_SECRET = my_secret
+DB_USERNAME=username
+DB_PASSWORD=password
+DB_NAME=db_name
+DB_SERVER=127.0.0.1

@@ -2,7 +2,8 @@ from models.database import db
 
 """A class to represent a Genres"""
 
-class Genres(db.Models):
+
+class Genres(db.Model):
     """ Reviews Model """
     __tablename__ = 'Genres'
     id = db.Column(db.Integer, primary_key=True)
@@ -16,4 +17,4 @@ class Genres(db.Models):
 
     def __repr__(self):
         """File represention"""
-        return  vars(Genres)
+        return vars(Genres)
