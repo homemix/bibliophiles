@@ -8,7 +8,7 @@ class Genres(db.Models):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text(), nullable=False)
     description = db.Column(db.Text(), nullable=False)
-    books = db.relationship("Books", back_populates="Genres")
+    books = db.relationship("Books", back_populates="genres")
 
     def __init__(self, name, description):
         self.name = name

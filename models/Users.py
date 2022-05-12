@@ -10,8 +10,9 @@ class Users(db.Models):
     password = db.Column(db.Text(), nullable=False)
     email = db.Column(db.Text(), nullable=False)
     UserTypes_id = db.Column(db.Integer, db.ForeignKey('UserTypes.id'))
-    UserTypes = db.relationship("UserTypes", back_populates="user")
-    Reviews = db.relationship("Reviews", back_populates="user_id")
+    usertypes = db.relationship("UserTypes", back_populates="users")
+    reviews = db.relationship("Reviews", back_populates="user_id")
+    
 
     def __init__(self, user_name, password, email, UserTypes_id):
         self.user_name = user_name
