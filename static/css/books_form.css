@@ -1,0 +1,13 @@
+/*!
+ * Start Bootstrap
+ */
+
+.input-group mb-12
+{
+    padding-top:            20px;
+    padding-x:            input-padding-x;
+    font-weight:          input-font-weight;
+    color:                green;
+    background-color:     ray-200;
+    border-color:         input-border-color;
+}
