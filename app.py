@@ -2,7 +2,13 @@ from flask import Flask, render_template
 from dotenv import load_dotenv
 import os
 from models.database import db
-from models import Book, Genre, Review, User, UserType
+from models.Book import Book
+from models.Genre import Genre
+from models.User import User
+from models.Review import Review
+from models.UserType import UserType
+
+from blueprints.BooksBlueprint import books
 
 app = Flask(__name__)
 
@@ -19,17 +25,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.app = app
 db.init_app(app)
 
-
-@app.route('/')
-def hello_world():
-    return render_template('base.html')
-
-
-@app.route('/books')
-def view_books():
-    page_title = 'Books'
-    return render_template('books/index.html', page_title=page_title)
-
+app.register_blueprint(books, url_prefix='/books')
 
 if __name__ == '__main__':
     app.run()

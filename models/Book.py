@@ -24,4 +24,5 @@ class Book(db.Model):
         self.publisher = publisher
 
     def __repr__(self):
-        return "<Books %r>" % self.title, self.author, self.genre_id, self.published_date, self.publisher
+        """Books File representation"""
+        return vars(Book)

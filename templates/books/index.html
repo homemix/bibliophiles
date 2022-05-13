@@ -2,7 +2,7 @@
 {% block pageContent %}
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Books Reviews</h6>
+            <button style="float: right" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Add Book</button>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -30,52 +30,24 @@
                     </tr>
                     </tfoot>
                     <tbody>
-
-                    <tr>
-                        <td>Cara Stevens</td>
-                        <td>Sales Assistant</td>
-                        <td>New York</td>
-                        <td>46</td>
-                        <td>2011/12/06</td>
-                        <td>$145,600</td>
-                        <td>Actions</td>
-                    </tr>
-                    <tr>
-                        <td>Hermione Butler</td>
-                        <td>Regional Director</td>
-                        <td>London</td>
-                        <td>47</td>
-                        <td>2011/03/21</td>
-                        <td>$356,250</td>
-                         <td>Actions</td>
-                    </tr>
-                    <tr>
-                        <td>Lael Greer</td>
-                        <td>Systems Administrator</td>
-                        <td>London</td>
-                        <td>21</td>
-                        <td>2009/02/27</td>
-                        <td>$103,500</td>
-                         <td>Actions</td>
-                    </tr>
-                    <tr>
-                        <td>Jonas Alexander</td>
-                        <td>Developer</td>
-                        <td>San Francisco</td>
-                        <td>30</td>
-                        <td>2010/07/14</td>
-                        <td>$86,500</td>
-                         <td>Actions</td>
-                    </tr>
-                    <tr>
-                        <td>Donna Snider</td>
-                        <td>Customer Support</td>
-                        <td>New York</td>
-                        <td>27</td>
-                        <td>2011/01/25</td>
-                        <td>$112,000</td>
-                         <td>Actions</td>
-                    </tr>
+                    {% for book in books %}
+                        <tr>
+                            <td>{{ book.id }}</td>
+                            <td>{{ book.title }}</td>
+                            <td>{{ book.author }}</td>
+                            <td>{{ book.genre.name }}</td>
+                            <td>{{ book.published_date }}</td>
+                            <td>{{ book.publisher }}</td>
+                            <td>
+                                <a href="" class="btn btn-primary btn-sm">View
+                                    Reviews</a>
+                                <a href=""
+                                   class="btn btn-warning btn-sm">Update Book</a>
+                                <a href=""
+                                   class="btn btn-danger btn-sm">Delete Book</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
                     </tbody>
                 </table>
             </div>
