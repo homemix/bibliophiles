@@ -2,7 +2,7 @@ from flask import Flask, render_template
 from dotenv import load_dotenv
 import os
 from models.database import db
-from models import Books, Genres, Reviews, Users, UserTypes
+from models import Book, Genre, Review, User, UserType
 
 app = Flask(__name__)
 
