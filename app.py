@@ -27,5 +27,12 @@ db.init_app(app)
 
 app.register_blueprint(books, url_prefix='/books')
 
+
+@app.route('/')
+def index():
+    page_title = 'Books'
+    return render_template('base.html', page_title=page_title)
+
+
 if __name__ == '__main__':
     app.run()
