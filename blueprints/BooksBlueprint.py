@@ -11,6 +11,7 @@ page_title = 'Books'
 @books.route('/')
 def index():
     all_books = Book.query.all()
+    print(all_books)
     return render_template('books/index.html',
                            page_title=page_title, books=all_books)
 

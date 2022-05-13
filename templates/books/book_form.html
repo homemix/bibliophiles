@@ -1,32 +1,28 @@
-<html>
-<head>
-  <link rel="stylesheet" href="~/books_form.css">
-</head>
-<body>
-
-<form class="row g-3">
-
-<div class="col-12">
-  <span class="input-group-text" id="inputGroup-sizing-default">Book title</span>
-  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-</div>
-
-<div class="input-group mb-12">
-  <span class="input-group-text" id="inputGroup-sizing-default">Author</span>
-  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-</div>
-
-<div class="input-group mb-12">
-  <span class="input-group-text" id="inputGroup-sizing-default">Publisher</span>
-  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-</div>
-
-<div class="input-group mb-12">
-  <span class="input-group-text" id="inputGroup-sizing-default">Published date</span>
-  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-</div>
+<form>
+    <div class="mb-3">
+        <input type="text" class="form-control" name="title" id="title" aria-describedby="title"
+               placeholder="Book Title">
+    </div>
+    <div class="mb-3">
+        <input type="text" class="form-control" name="author" id="author" aria-describedby="author"
+               placeholder="Book Author">
+    </div>
+    <div class="mb-3">
+        <input type="date" class="form-control" name="published_date" id="published_date"
+               aria-describedby="published_date"
+               placeholder="Book published Date">
+    </div>
+    <div class="mb-3">
+        <input type="text" class="form-control" name="publisher" id="publisher" aria-describedby="publisher"
+               placeholder="Book publisher">
+    </div>
+    <div class="mb-3">
+        <select class="form-select" aria-label="Default select example">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+    </div>
+{#    <button type="submit" class="btn btn-primary">Submit</button>#}
 </form>
-</body>
-</html>
-
-

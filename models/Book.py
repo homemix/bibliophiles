@@ -13,7 +13,6 @@ class Book(db.Model):
     published_date = db.Column(db.Date, nullable=False)
     publisher = db.Column(db.String(100), nullable=False)
     genre_id = db.Column(db.ForeignKey('genres.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
-
     genre = db.relationship('Genre')
 
     def __init__(self, title, author, genre_id, published_date, publisher):
@@ -25,4 +24,4 @@ class Book(db.Model):
 
     def __repr__(self):
         """Books File representation"""
-        return vars(Book)
+        return str(vars(self))
