@@ -3,17 +3,18 @@ from models.database import db
 """ A class to represent a book """
 
 
-class Books(db.Model):
+class Book(db.Model):
     """ Books Model """
     __tablename__ = 'books'
+
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(80), nullable=False)
-    author = db.Column(db.String(80), nullable=False)
+    title = db.Column(db.String(100), nullable=False)
+    author = db.Column(db.String(100), nullable=False)
     published_date = db.Column(db.Date, nullable=False)
-    publisher = db.Column(db.String(80), nullable=False)
-    genres_id = db.Column(db.Integer, db.ForeignKey('Genres.id'))
-    genres = db.relationship("Genres", back_populates="books")
-    reviews = db.relationship("Reviews", back_populates="books")
+    publisher = db.Column(db.String(100), nullable=False)
+    genre_id = db.Column(db.ForeignKey('genres.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
+
+    genre = db.relationship('Genre')
 
     def __init__(self, title, author, genre_id, published_date, publisher):
         self.title = title
@@ -23,5 +24,5 @@ class Books(db.Model):
         self.publisher = publisher
 
     def __repr__(self):
-        return "<Books %r>" % self.title, self.author, self.genre_id, self.published_date, self.publisher
-
+        """Books File representation"""
+        return vars(Book)
