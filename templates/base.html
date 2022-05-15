@@ -182,6 +182,40 @@
 <script src="{{ url_for('static',filename="vendor/datatables/jquery.dataTables.min.js") }}"></script>
 <script src="{{ url_for('static',filename="vendor/datatables/dataTables.bootstrap4.min.js") }}"></script>
 <script src="{{ url_for('static',filename="js/demo/datatables-demo.js") }}"></script>
+
+{# custom scripts #}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#deleteBooksModal').on('show.bs.modal', function (event) {
+            let button = $(event.relatedTarget);
+            let bookId = button.data('id');
+            let modal = $(this);
+            modal.find('.modal-footer a').attr('href', '/books/delete/' + bookId);
+        });
+        $('#updateBooksModal').on('show.bs.modal', function (event) {
+            let button = $(event.relatedTarget);
+            let bookId = button.data('id');
+            let url = '/books/show/' + bookId;
+            $.ajax({
+                url: url,
+                type: 'GET',
+                success: function (data) {
+                    $('#updateBooksModal').find('.modal-body #booksUpdateForm #book_id').val(data.id);
+                    $('#updateBooksModal').find('.modal-body #booksUpdateForm #title').val(data.title);
+                    $('#updateBooksModal').find('.modal-body #booksUpdateForm #author').val(data.author);
+                    $('#updateBooksModal').find('.modal-body #booksUpdateForm #published_date').val(data.published_date);
+                    $('#updateBooksModal').find('.modal-body #booksUpdateForm #publisher').val(data.publisher);
+                    $('#updateBooksModal').find('.modal-body #booksUpdateForm #genre_id').val(data.genre_id);
+
+                }
+            })
+        })
+    });
+
+
+</script>
 </body>
 
 </html>

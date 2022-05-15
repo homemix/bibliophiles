@@ -11,6 +11,7 @@ from models.UserType import UserType
 from blueprints.BooksBlueprint import books
 
 app = Flask(__name__)
+app.url_map.strict_slashes = False
 
 load_dotenv()
 
@@ -24,6 +25,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.app = app
 db.init_app(app)
+
 
 app.register_blueprint(books, url_prefix='/books')
 

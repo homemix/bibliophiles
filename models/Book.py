@@ -25,3 +25,14 @@ class Book(db.Model):
     def __repr__(self):
         """Books File representation"""
         return str(vars(self))
+
+    def serialize(self):
+        """Serialize a book"""
+        return {
+            'id': self.id,
+            'title': self.title,
+            'author': self.author,
+            'genre_id': self.genre_id,
+            'published_date': self.published_date,
+            'publisher': self.publisher
+        }

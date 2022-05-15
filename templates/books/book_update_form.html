@@ -1,0 +1,32 @@
+<form id="booksUpdateForm" action="books/edit" method="POST">
+    <input type="hidden" name="id" id="book_id">
+    <div class="mb-3">
+        <input type="text" class="form-control"
+               name="title" id="title"
+               aria-describedby="title"
+               placeholder="Book Title">
+    </div>
+    <div class="mb-3">
+        <input type="text" class="form-control" name="author" id="author"
+               aria-describedby="author"
+               placeholder="Book Author">
+    </div>
+    <div class="mb-3">
+        <input type="date" class="form-control" name="published_date" id="published_date"
+               aria-describedby="published_date"
+               placeholder="Book published Date">
+    </div>
+    <div class="mb-3">
+        <input type="text" class="form-control" name="publisher" id="publisher"
+               aria-describedby="publisher"
+               placeholder="Book publisher">{##}
+    </div>
+    <div class="mb-3">
+        <select class="form-select" aria-label="Default select example" id="genre_id" name="genre_id">
+            {% for genre in genres %}
+                <option value="{{ genre.id }}">{{ genre.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button style="float: right" type="submit" class="btn btn-primary">Update Book</button>
+</form>
