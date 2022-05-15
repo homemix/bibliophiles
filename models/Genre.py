@@ -18,3 +18,11 @@ class Genre(db.Model):
     def __repr__(self):
         """File representation"""
         return vars(Genre)
+
+    def serialize(self):
+        """Return object data in easily serializable format"""
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.description
+        }

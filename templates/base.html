@@ -212,6 +212,27 @@
                 }
             })
         })
+        $('#deleteGenreModal').on('show.bs.modal', function (event) {
+            let button = $(event.relatedTarget);
+            let genreId = button.data('id');
+            let modal = $(this);
+            modal.find('.modal-footer a').attr('href', '/genres/delete/' + genreId);
+        });
+        $('#updateGenreModal').on('show.bs.modal', function (event) {
+            let button = $(event.relatedTarget);
+            let genreId = button.data('id');
+            let url = '/genres/show/' + genreId;
+            $.ajax({
+                url: url,
+                type: 'GET',
+                success: function (data) {
+                    $('#updateGenreModal').find('.modal-body #genreUpdateForm #genre_id').val(data.id);
+                    $('#updateGenreModal').find('.modal-body #genreUpdateForm #name').val(data.name);
+                    $('#updateGenreModal').find('.modal-body #genreUpdateForm #description').val(data.description);
+                }
+            })
+        })
+
     });
 
 

@@ -1,0 +1,15 @@
+<form id="genreUpdateForm" action="genres/edit" method="POST">
+    <input type="hidden" name="id" id="genre_id">
+    <div class="mb-3">
+        <input type="text" class="form-control"
+               name="name" id="name"
+               aria-describedby="name"
+               placeholder="Genre Name">
+    </div>
+    <div class="mb-3">
+        <input type="text" class="form-control" name="description" id="description"
+               aria-describedby="description"
+               placeholder="Genre description">
+    </div>
+    <button style="float: right" type="submit" class="btn btn-primary">Submit</button>
+</form>

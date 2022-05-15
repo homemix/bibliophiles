@@ -9,6 +9,7 @@ from models.Review import Review
 from models.UserType import UserType
 
 from blueprints.BooksBlueprint import books
+from blueprints.GenreBlueprint import genres
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
@@ -28,6 +29,7 @@ db.init_app(app)
 
 
 app.register_blueprint(books, url_prefix='/books')
+app.register_blueprint(genres, url_prefix='/genres')
 
 
 @app.route('/')
