@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% block pageContent %}
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <button style="float: right"
+                    class="btn btn-primary"
+                    data-toggle="modal"
+                    data-target="#addUserTypeModal">Add User Type
+            </button>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                    </tfoot>
+                    <tbody>
+                    {% for userType in userTypes %}
+                        <tr>
+                            <td>{{ userType.id }}</td>
+                            <td>{{ userType.name }}</td>
+                            <td>{{ userType.description }}</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm "
+                                        data-toggle="modal"
+                                        data-target="#updateUserTypeModal"
+                                        data-id="{{ userType.id }}">Update user Type
+                                </button>
+                                <button class="btn btn-danger btn-sm "
+                                        data-toggle="modal"
+                                        data-target="#deleteUserTypeModal"
+                                        data-id="{{ userType.id }}">Delete user Type
+                                </button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+     <!-- Add User Type Modal-->
+    <div class="modal fade" id="addUserTypeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add User Type</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {% include 'userTypes/user_type_add_form.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- Update User Type Modal-->
+    <div class="modal fade" id="updateUserTypeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Update User Type</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" data-book="">
+                    {% include 'userTypes/user_type_update_form.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- Delete Genre Modal-->
+    <div class="modal fade" id="deleteUserTypeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete User Type</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete this User type?</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

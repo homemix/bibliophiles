@@ -212,6 +212,7 @@
                 }
             })
         })
+
         $('#deleteGenreModal').on('show.bs.modal', function (event) {
             let button = $(event.relatedTarget);
             let genreId = button.data('id');
@@ -229,6 +230,28 @@
                     $('#updateGenreModal').find('.modal-body #genreUpdateForm #genre_id').val(data.id);
                     $('#updateGenreModal').find('.modal-body #genreUpdateForm #name').val(data.name);
                     $('#updateGenreModal').find('.modal-body #genreUpdateForm #description').val(data.description);
+                }
+            })
+        })
+
+
+         $('#deleteUserTypeModal').on('show.bs.modal', function (event) {
+            let button = $(event.relatedTarget);
+            let userTypeId = button.data('id');
+            let modal = $(this);
+            modal.find('.modal-footer a').attr('href', '/userTypes/delete/' + userTypeId);
+        });
+        $('#updateUserTypeModal').on('show.bs.modal', function (event) {
+            let button = $(event.relatedTarget);
+            let userTypeId = button.data('id');
+            let url = '/userTypes/show/' + userTypeId;
+            $.ajax({
+                url: url,
+                type: 'GET',
+                success: function (data) {
+                    $('#updateUserTypeModal').find('.modal-body #userTypeUpdateForm #user_type_id').val(data.id);
+                    $('#updateUserTypeModal').find('.modal-body #userTypeUpdateForm #name').val(data.name);
+                    $('#updateUserTypeModal').find('.modal-body #userTypeUpdateForm #description').val(data.description);
                 }
             })
         })

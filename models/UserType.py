@@ -18,3 +18,11 @@ class UserType(db.Model):
     def __repr__(self):
         """UserTypes File representation"""
         return vars(UserType)
+
+    def serialize(self):
+        """Serialize UserType"""
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.description
+        }
