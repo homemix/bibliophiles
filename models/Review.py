@@ -10,10 +10,8 @@ class Review(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     rating = db.Column(db.Integer, nullable=False)
     review = db.Column(db.Text, nullable=False)
-    users_id = db.Column(db.Integer, nullable=False)
-    books_id = db.Column(db.ForeignKey('users.id', ondelete='CASCADE', onupdate='CASCADE'),
-                         db.ForeignKey('books.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
-
+    users_id = db.Column(db.ForeignKey('users.id', ondelete='CASCADE', onupdate='CASCADE'))
+    books_id = db.Column(db.ForeignKey('books.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
     books = db.relationship('Book')
     user = db.relationship('User')
 

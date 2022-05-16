@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block pageContent %}
+     <h5>Book Title: {{ book.title }}</h5>
+            <h5>Book Author: {{ book.author }}</h5>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <button style="float: right"
+                    id="addGenreBtn"
+                    class="btn btn-primary"
+                    data-toggle="modal"
+                    data-target="#addGenreModal">Add Review
+            </button>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Rating</th>
+                        <th>Review</th>
+                        <th>User</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th>#</th>
+                        <th>Rating</th>
+                        <th>Review</th>
+                        <th>User</th>
+                        <th>Actions</th>
+                    </tr>
+                    </tfoot>
+                    <tbody>
+                    {% for review in reviews %}
+                        <tr>
+                            <td>{{ review.id }}</td>
+                            <td>{{ review.rating }}</td>
+                            <td>{{ review.review }}</td>
+                            <td>{{ review.user.username }}</td>
+                            <td>
+                                <button class="btn btn-primary"
+                                        data-toggle="modal"
+                                        data-target="#editGenreModal"
+                                        data-id="{{ review.id }}"
+                                        data-rating="{{ review.rating }}"
+                                        data-review="{{ review.review }}"
+                                        data-user="{{ review.user.username }}">
+                                    Edit
+                                </button>
+                                <button class="btn btn-danger"
+                                        data-toggle="modal"
+                                        data-target="#deleteGenreModal"
+                                        data-id="{{ review.id }}">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

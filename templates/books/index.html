@@ -44,7 +44,8 @@
                             <td>{{ book.published_date }}</td>
                             <td>{{ book.publisher }}</td>
                             <td>
-                                <a href="" class="btn btn-primary btn-sm">View
+                                <a href="{{ url_for('reviews.index',books_id=book.id) }}"
+                                   class="btn btn-primary btn-sm">View
                                     Reviews</a>
                                 <button class="btn btn-warning btn-sm "
                                         id="updateBookBtn"
