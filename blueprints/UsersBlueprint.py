@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask import Blueprint, render_template
 
 from models.User import User
 
@@ -6,7 +6,7 @@ users = Blueprint('users', __name__)
 page_title = 'Users'
 
 
-@users.route('/', )
+@users.route('/')
 def index():
     all_users = User.query.all()
     return render_template('users/index.html',

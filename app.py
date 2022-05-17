@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template,redirect,url_for,request,flash
 from dotenv import load_dotenv
 import os
 from models.database import db
@@ -13,6 +13,7 @@ from blueprints.GenreBlueprint import genres
 from blueprints.UserTypeBluePrint import userTypes
 from blueprints.ReviewBluprint import reviews
 from blueprints.UsersBlueprint import users
+from blueprints.AuthBlueprint import auth
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
@@ -36,12 +37,12 @@ app.register_blueprint(genres, url_prefix='/genres')
 app.register_blueprint(userTypes, url_prefix='/userTypes')
 app.register_blueprint(reviews, url_prefix='/reviews')
 app.register_blueprint(users, url_prefix='/users')
+app.register_blueprint(auth, url_prefix='/auth')
 
 
 @app.route('/')
 def index():
-    page_title = 'Books'
-    return render_template('base.html', page_title=page_title)
+    return redirect(url_for('auth.login'))
 
 
 if __name__ == '__main__':
