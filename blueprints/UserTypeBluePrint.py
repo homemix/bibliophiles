@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, jsonify
+from flask import Blueprint, render_template, request, redirect, jsonify, flash
 
 from models.UserType import UserType
 from models.database import db
@@ -30,6 +30,7 @@ def create():
         try:
             db.session.add(new_user_type)
             db.session.commit()
+            flash('User Type Created Successfully', 'success')
             return redirect('/userTypes')
         except:
             return 'There was an issue adding your genre'
@@ -46,6 +47,7 @@ def edit():
         user_type.description = request.form['description']
         try:
             db.session.commit()
+            flash('User Type Updated Successfully', 'success')
             return redirect('/userTypes')
         except:
             return 'There was an issue editing your genre'
@@ -59,6 +61,7 @@ def delete(user_type_id):
     try:
         db.session.delete(user_type)
         db.session.commit()
+        flash('User Type Deleted Successfully', 'success')
         return redirect('/userTypes')
     except:
         return 'There was an issue deleting your genre'

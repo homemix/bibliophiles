@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, jsonify
+from flask import Blueprint, render_template, request, redirect, jsonify,flash
 
 from models.Genre import Genre
 from models.database import db
@@ -31,6 +31,7 @@ def create():
         try:
             db.session.add(new_genre)
             db.session.commit()
+            flash( 'Genre successfully added!', 'success')
             return redirect('/genres')
         except:
             return 'There was an issue adding your genre'
@@ -47,6 +48,7 @@ def edit():
         genre.description = request.form['description']
         try:
             db.session.commit()
+            flash( 'Genre successfully edited!', 'success')
             return redirect('/genres')
         except:
             return 'There was an issue editing your genre'
@@ -60,6 +62,7 @@ def delete(genre_id):
     try:
         db.session.delete(genre)
         db.session.commit()
+        flash( 'Genre successfully deleted!', 'success')
         return redirect('/genres')
     except:
         return 'There was an issue deleting your genre'

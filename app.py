@@ -42,7 +42,7 @@ app.register_blueprint(auth, url_prefix='/auth')
 
 @app.route('/')
 def index():
-    return redirect(url_for('auth.login'))
+    return redirect(url_for('books.index'))
 
 
 if __name__ == '__main__':

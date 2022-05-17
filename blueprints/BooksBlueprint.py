@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, jsonify
+from flask import Blueprint, render_template, request, redirect, jsonify, flash
 
 from models.Book import Book
 from models.Genre import Genre
@@ -23,7 +23,10 @@ def index():
 @books.route('/show/<int:book_id>')
 def show(book_id):
     book = Book.query.get_or_404(book_id)
-    return jsonify(book.serialize())
+    if book:
+        return jsonify(book.serialize())
+    else:
+        flash('Book not found!', 'danger')
 
 
 @books.route('/create', methods=['GET', 'POST'])
@@ -43,6 +46,7 @@ def create():
         try:
             db.session.add(new_book)
             db.session.commit()
+            flash('Book added successfully!', 'success')
             return redirect('/books')
         except:
             return "There was a problem adding new book."
@@ -62,6 +66,7 @@ def edit():
         book.genre_id = request.form['genre_id']
         try:
             db.session.commit()
+            flash('Book updated successfully!', 'success')
             return redirect('/books')
         except:
             return "There was a problem updating book."
@@ -75,6 +80,7 @@ def delete(book_id):
     try:
         db.session.delete(book)
         db.session.commit()
+        flash('Book deleted successfully!', 'success')
         return redirect('/books')
     except:
         return "There was a problem deleting book."
