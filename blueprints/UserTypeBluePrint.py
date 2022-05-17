@@ -33,7 +33,8 @@ def create():
             flash('User Type Created Successfully', 'success')
             return redirect('/userTypes')
         except:
-            return 'There was an issue adding your genre'
+            flash('There was an issue creating your user type', 'danger')
+            return 'There was an issue adding your user type'
     else:
         return "You are not allowed to access this page"
 
@@ -50,7 +51,8 @@ def edit():
             flash('User Type Updated Successfully', 'success')
             return redirect('/userTypes')
         except:
-            return 'There was an issue editing your genre'
+            flash('There was an issue updating your user type', 'danger')
+            return 'There was an issue editing your user type'
     else:
         return "You are not allowed to access this page"
 
@@ -64,4 +66,5 @@ def delete(user_type_id):
         flash('User Type Deleted Successfully', 'success')
         return redirect('/userTypes')
     except:
-        return 'There was an issue deleting your genre'
+        flash('There was an issue deleting your user type', 'danger')
+        return 'There was an issue deleting your user type'

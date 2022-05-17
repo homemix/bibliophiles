@@ -49,6 +49,7 @@ def create():
             flash('Book added successfully!', 'success')
             return redirect('/books')
         except:
+            flash('There was a problem adding book.', 'danger')
             return "There was a problem adding new book."
     else:
         return render_template('books/book_add_form.html')
@@ -69,6 +70,7 @@ def edit():
             flash('Book updated successfully!', 'success')
             return redirect('/books')
         except:
+            flash('There was a problem updating book.', 'danger')
             return "There was a problem updating book."
     else:
         return "There was a problem updating book."
@@ -83,4 +85,5 @@ def delete(book_id):
         flash('Book deleted successfully!', 'success')
         return redirect('/books')
     except:
+        flash('There was a problem deleting book.', 'danger')
         return "There was a problem deleting book."
