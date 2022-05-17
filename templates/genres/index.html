@@ -6,7 +6,9 @@
                     id="addGenreBtn"
                     class="btn btn-primary"
                     data-toggle="modal"
-                    data-target="#addGenreModal">Add Genre
+                    data-target="#addGenreModal">
+                <i class="fas fa-plus"></i>
+                Add Genre
             </button>
         </div>
         <div class="card-body">
@@ -38,12 +40,16 @@
                                 <button class="btn btn-warning btn-sm "
                                         data-toggle="modal"
                                         data-target="#updateGenreModal"
-                                        data-id="{{ genre.id }}">Update Genre
+                                        data-id="{{ genre.id }}">
+                                    <i class="fas fa-edit"></i>
+                                    Update Genre
                                 </button>
                                 <button class="btn btn-danger btn-sm "
                                         data-toggle="modal"
                                         data-target="#deleteGenreModal"
-                                        data-id="{{ genre.id }}">Delete Genre
+                                        data-id="{{ genre.id }}">
+                                    <i class="fas fa-trash"></i>
+                                    Delete Genre
                                 </button>
                             </td>
                         </tr>
@@ -54,7 +60,7 @@
         </div>
     </div>
 
-     <!-- Add Genre Modal-->
+    <!-- Add Genre Modal-->
     <div class="modal fade" id="addGenreModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -72,7 +78,7 @@
         </div>
     </div>
 
-     <!-- Update Genre Modal-->
+    <!-- Update Genre Modal-->
     <div class="modal fade" id="updateGenreModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -90,7 +96,7 @@
         </div>
     </div>
 
-     <!-- Delete Genre Modal-->
+    <!-- Delete Genre Modal-->
     <div class="modal fade" id="deleteGenreModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
