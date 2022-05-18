@@ -4,12 +4,15 @@ from models.Book import Book
 from models.Genre import Genre
 from models.database import db
 
+from flask_login import login_required
+
 books = Blueprint('books', __name__)
 
 page_title = 'Books'
 
 
 @books.route('/')
+@login_required
 def index():
     all_books = Book.query.all()
     book_genre = Genre.query.all()
@@ -21,6 +24,7 @@ def index():
 
 
 @books.route('/show/<int:book_id>')
+@login_required
 def show(book_id):
     book = Book.query.get_or_404(book_id)
     if book:
@@ -30,6 +34,7 @@ def show(book_id):
 
 
 @books.route('/create', methods=['GET', 'POST'])
+@login_required
 def create():
     if request.method == 'POST':
         title = request.form['title']
@@ -56,6 +61,7 @@ def create():
 
 
 @books.route('/edit', methods=['GET', 'POST'])
+@login_required
 def edit():
     book_id = request.form['id']
     book = Book.query.get_or_404(book_id)
@@ -77,6 +83,7 @@ def edit():
 
 
 @books.route('/delete/<int:book_id>', methods=['POST', 'GET'])
+@login_required
 def delete(book_id):
     book = Book.query.get_or_404(book_id)
     try:

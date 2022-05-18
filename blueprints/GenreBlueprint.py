@@ -3,12 +3,15 @@ from flask import Blueprint, render_template, request, redirect, jsonify, flash
 from models.Genre import Genre
 from models.database import db
 
+from flask_login import login_required
+
 genres = Blueprint('genres', __name__)
 
 page_title = "Genres"
 
 
 @genres.route('/')
+@login_required
 def index():
     all_genre = Genre.query.all()
     return render_template('genres/index.html',
@@ -17,12 +20,14 @@ def index():
 
 
 @genres.route('show/<int:genre_id>', methods=['GET'])
+@login_required
 def show(genre_id):
     genre = Genre.query.get_or_404(genre_id)
     return jsonify(genre.serialize())
 
 
 @genres.route('/create', methods=['GET', 'POST'])
+@login_required
 def create():
     if request.method == 'POST':
         name = request.form['name']
@@ -41,6 +46,7 @@ def create():
 
 
 @genres.route('/edit', methods=['GET', 'POST'])
+@login_required
 def edit():
     genre_id = request.form['id']
     genre = Genre.query.get_or_404(genre_id)
@@ -59,6 +65,7 @@ def edit():
 
 
 @genres.route('/delete/<int:genre_id>', methods=['POST', 'GET'])
+@login_required
 def delete(genre_id):
     genre = Genre.query.get_or_404(genre_id)
     try:
