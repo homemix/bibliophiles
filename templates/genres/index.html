@@ -33,7 +33,7 @@
                     <tbody>
                     {% for genre in genres %}
                         <tr>
-                            <td>{{ genre.id }}</td>
+                             <td>{{ loop.index }}</td>
                             <td>{{ genre.name }}</td>
                             <td>{{ genre.description }}</td>
                             <td>

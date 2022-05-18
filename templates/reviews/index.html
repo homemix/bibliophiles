@@ -35,7 +35,7 @@
                     <tbody>
                     {% for review in reviews %}
                         <tr>
-                            <td>{{ review.id }}</td>
+                             <td>{{ loop.index }}</td>
                             <td>{{ review.rating }}</td>
                             <td>{{ review.review }}</td>
                             <td>{{ review.user.username }}</td>

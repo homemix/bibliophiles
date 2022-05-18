@@ -32,7 +32,7 @@
                     <tbody>
                     {% for userType in userTypes %}
                         <tr>
-                            <td>{{ userType.id }}</td>
+                             <td>{{ loop.index }}</td>
                             <td>{{ userType.name }}</td>
                             <td>{{ userType.description }}</td>
                             <td>
