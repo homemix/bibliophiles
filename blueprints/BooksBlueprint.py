@@ -1,8 +1,10 @@
-from flask import Blueprint, render_template, request, redirect, jsonify
+from flask import Blueprint, render_template, request, redirect, jsonify, flash
 
 from models.Book import Book
 from models.Genre import Genre
 from models.database import db
+
+from flask_login import login_required
 
 books = Blueprint('books', __name__)
 
@@ -10,6 +12,7 @@ page_title = 'Books'
 
 
 @books.route('/')
+@login_required
 def index():
     all_books = Book.query.all()
     book_genre = Genre.query.all()
@@ -21,12 +24,17 @@ def index():
 
 
 @books.route('/show/<int:book_id>')
+@login_required
 def show(book_id):
     book = Book.query.get_or_404(book_id)
-    return jsonify(book.serialize())
+    if book:
+        return jsonify(book.serialize())
+    else:
+        flash('Book not found!', 'danger')
 
 
 @books.route('/create', methods=['GET', 'POST'])
+@login_required
 def create():
     if request.method == 'POST':
         title = request.form['title']
@@ -43,14 +51,17 @@ def create():
         try:
             db.session.add(new_book)
             db.session.commit()
+            flash('Book added successfully!', 'success')
             return redirect('/books')
         except:
+            flash('There was a problem adding book.', 'danger')
             return "There was a problem adding new book."
     else:
         return render_template('books/book_add_form.html')
 
 
 @books.route('/edit', methods=['GET', 'POST'])
+@login_required
 def edit():
     book_id = request.form['id']
     book = Book.query.get_or_404(book_id)
@@ -62,19 +73,24 @@ def edit():
         book.genre_id = request.form['genre_id']
         try:
             db.session.commit()
+            flash('Book updated successfully!', 'success')
             return redirect('/books')
         except:
+            flash('There was a problem updating book.', 'danger')
             return "There was a problem updating book."
     else:
         return "There was a problem updating book."
 
 
 @books.route('/delete/<int:book_id>', methods=['POST', 'GET'])
+@login_required
 def delete(book_id):
     book = Book.query.get_or_404(book_id)
     try:
         db.session.delete(book)
         db.session.commit()
+        flash('Book deleted successfully!', 'success')
         return redirect('/books')
     except:
+        flash('There was a problem deleting book.', 'danger')
         return "There was a problem deleting book."

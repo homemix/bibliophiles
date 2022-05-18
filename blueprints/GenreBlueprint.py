@@ -1,7 +1,9 @@
-from flask import Blueprint, render_template, request, redirect, jsonify
+from flask import Blueprint, render_template, request, redirect, jsonify, flash
 
 from models.Genre import Genre
 from models.database import db
+
+from flask_login import login_required
 
 genres = Blueprint('genres', __name__)
 
@@ -9,6 +11,7 @@ page_title = "Genres"
 
 
 @genres.route('/')
+@login_required
 def index():
     all_genre = Genre.query.all()
     return render_template('genres/index.html',
@@ -17,12 +20,14 @@ def index():
 
 
 @genres.route('show/<int:genre_id>', methods=['GET'])
+@login_required
 def show(genre_id):
     genre = Genre.query.get_or_404(genre_id)
     return jsonify(genre.serialize())
 
 
 @genres.route('/create', methods=['GET', 'POST'])
+@login_required
 def create():
     if request.method == 'POST':
         name = request.form['name']
@@ -31,14 +36,17 @@ def create():
         try:
             db.session.add(new_genre)
             db.session.commit()
+            flash('Genre successfully added!', 'success')
             return redirect('/genres')
         except:
+            flash('There was an issue adding your genre', 'danger')
             return 'There was an issue adding your genre'
     else:
         return "You are not allowed to access this page"
 
 
 @genres.route('/edit', methods=['GET', 'POST'])
+@login_required
 def edit():
     genre_id = request.form['id']
     genre = Genre.query.get_or_404(genre_id)
@@ -47,19 +55,24 @@ def edit():
         genre.description = request.form['description']
         try:
             db.session.commit()
+            flash('Genre successfully edited!', 'success')
             return redirect('/genres')
         except:
+            flash('There was an issue editing your genre', 'danger')
             return 'There was an issue editing your genre'
     else:
         return "You are not allowed to access this page"
 
 
 @genres.route('/delete/<int:genre_id>', methods=['POST', 'GET'])
+@login_required
 def delete(genre_id):
     genre = Genre.query.get_or_404(genre_id)
     try:
         db.session.delete(genre)
         db.session.commit()
+        flash('Genre successfully deleted!', 'success')
         return redirect('/genres')
     except:
+        flash('There was an issue deleting your genre', 'danger')
         return 'There was an issue deleting your genre'

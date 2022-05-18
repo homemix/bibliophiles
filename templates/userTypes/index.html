@@ -5,7 +5,9 @@
             <button style="float: right"
                     class="btn btn-primary"
                     data-toggle="modal"
-                    data-target="#addUserTypeModal">Add User Type
+                    data-target="#addUserTypeModal">
+                <i class="fas fa-plus"></i>
+                Add User Type
             </button>
         </div>
         <div class="card-body">
@@ -30,19 +32,23 @@
                     <tbody>
                     {% for userType in userTypes %}
                         <tr>
-                            <td>{{ userType.id }}</td>
+                             <td>{{ loop.index }}</td>
                             <td>{{ userType.name }}</td>
                             <td>{{ userType.description }}</td>
                             <td>
                                 <button class="btn btn-warning btn-sm "
                                         data-toggle="modal"
                                         data-target="#updateUserTypeModal"
-                                        data-id="{{ userType.id }}">Update user Type
+                                        data-id="{{ userType.id }}">
+                                    <i class="fas fa-edit"></i>
+                                    Update user Type
                                 </button>
                                 <button class="btn btn-danger btn-sm "
                                         data-toggle="modal"
                                         data-target="#deleteUserTypeModal"
-                                        data-id="{{ userType.id }}">Delete user Type
+                                        data-id="{{ userType.id }}">
+                                    <i class="fas fa-trash"></i>
+                                    Delete user Type
                                 </button>
                             </td>
                         </tr>
@@ -53,7 +59,7 @@
         </div>
     </div>
 
-     <!-- Add User Type Modal-->
+    <!-- Add User Type Modal-->
     <div class="modal fade" id="addUserTypeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -71,7 +77,7 @@
         </div>
     </div>
 
-     <!-- Update User Type Modal-->
+    <!-- Update User Type Modal-->
     <div class="modal fade" id="updateUserTypeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -89,7 +95,7 @@
         </div>
     </div>
 
-     <!-- Delete Genre Modal-->
+    <!-- Delete Genre Modal-->
     <div class="modal fade" id="deleteUserTypeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
