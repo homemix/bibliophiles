@@ -1,28 +1,35 @@
 <form id="booksAddForm" action="{{ url_for('books.create') }}" method="POST">
     <div class="mb-3">
         <input type="text" class="form-control"
+               required
                name="title" id="title"
                aria-describedby="title"
                placeholder="Book Title">
     </div>
     <div class="mb-3">
         <input type="text" class="form-control" name="author" id="author"
+               required
                aria-describedby="author"
                placeholder="Book Author">
     </div>
     <div class="mb-3">
         <input type="date" class="form-control" name="published_date" id="published_date"
                aria-describedby="published_date"
+               required
                placeholder="Book published Date">
     </div>
     <div class="mb-3">
         <input type="text" class="form-control" name="publisher" id="publisher"
                aria-describedby="publisher"
-               placeholder="Book publisher">{##}
+               required
+               placeholder="Book publisher">
     </div>
     <div class="mb-3">
-        <select class="form-select form-control" aria-label="Default select example" id="genre_id" name="genre_id">
-            <option selected disabled>Select Genre</option>
+        <select class="form-select form-control"
+                required
+                aria-label="Default select example"
+                id="genre_id" name="genre_id">
+            <option disabled value="">Select Genre</option>
             {% for genre in genres %}
                 <option value="{{ genre.id }}">{{ genre.name }}</option>
             {% endfor %}
