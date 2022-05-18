@@ -1,0 +1,11 @@
+#login {
+    padding: 220px;
+}
+body{
+    
+background: linear-gradient(135deg, #051b22, #1f1f0b);
+background: linear-gradient(135deg, #302c30, #326a6b);
+background-image: linear-gradient(135deg, #1b0c17 0%, #0e0d02 100%);
+background-image: linear-gradient(150deg, #1f1e20 0%, #913c31 100%, #685221 100%);
+min-height: 93vh;
+}
