@@ -3,3 +3,5 @@ python-dotenv
 Flask-SQLAlchemy
 flask-login
 Werkzeug
+Flask-Mail
+Flask-Migrate

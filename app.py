@@ -17,6 +17,10 @@ from blueprints.AuthBlueprint import auth
 
 from flask_login import LoginManager
 
+from utils.mail import mail
+
+from flask_migrate import Migrate
+
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 
@@ -30,8 +34,23 @@ app.config['SECRET_KEY'] = os.getenv("MY_SECRET")
 app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql://{DB_USERNAME}:{DB_PASSWORD}@{DB_SERVER}/{DB_NAME}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+#  mail config
+MAIL_SERVER = os.getenv('MAIL_SERVER')
+MAIL_PORT = os.getenv('MAIL_PORT')
+MAIL_USERNAME = os.getenv('MAIL_USERNAME')
+MAIL_PASSWORD = os.getenv('MAIL_PASSWORD')
+
+app.config['MAIL_SERVER'] = MAIL_SERVER
+app.config['MAIL_PORT'] = MAIL_PORT
+app.config['MAIL_USERNAME'] = MAIL_USERNAME
+app.config['MAIL_PASSWORD'] = MAIL_PASSWORD
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+
 db.app = app
 db.init_app(app)
+
+migrate = Migrate(app, db)
 
 app.register_blueprint(books, url_prefix='/books')
 app.register_blueprint(genres, url_prefix='/genres')
@@ -43,6 +62,9 @@ app.register_blueprint(auth, url_prefix='/auth')
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'auth.login'
+
+mail.app = app
+mail.init_app(app)
 
 
 @login_manager.user_loader

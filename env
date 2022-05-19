@@ -3,3 +3,8 @@ DB_USERNAME=username
 DB_PASSWORD=password
 DB_NAME=dbname
 DB_SERVER=127.0.0.1
+
+MAIL_SERVER=smtp.gmail.com
+MAIL_PORT=465
+MAIL_USERNAME=username
+MAIL_PASSWORD=password
