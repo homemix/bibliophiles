@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
 {% block pageContent %}
-    <h5>Book Title: {{ book.title }}</h5>
-    <h5>Book Author: {{ book.author }}</h5>
+    <div class="row ">
+        <h4 style="margin: 0 30px 0 30px">
+            Title: {{ book.title }}</h4>
+        <h4 style="margin-right: 30px">
+            Author: {{ book.author }}</h4>
+        <h4 style="margin-right: 30px">
+            Publisher: {{ book.publisher }}</h4>
+    </div>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <button style="float: right"
@@ -40,21 +46,21 @@
                             <td>{{ review.user.username }}</td>
                             <td>
                                 {% if current_user.id == review.users_id %}
-                                    <button class="btn btn-primary"
+                                    <button class="btn btn-primary btn-circle"
                                             data-toggle="modal"
                                             data-target="#editBookReviewModal"
                                             data-id="{{ review.id }}"
                                             data-rating="{{ review.rating }}"
                                             data-review="{{ review.review }}"
-                                            data-book_id ="{{ review.books_id }}"
+                                            data-book_id="{{ review.books_id }}"
                                             data-user_id="{{ review.user.id }}">
-                                        Edit
+                                        <i class="fas fa-edit"></i>
                                     </button>
-                                    <button class="btn btn-danger"
+                                    <button class="btn btn-danger btn-circle"
                                             data-toggle="modal"
                                             data-target="#deleteBookReviewModal"
                                             data-id="{{ review.id }}">
-                                        Delete
+                                        <i class="fas fa-trash"></i>
                                     </button>
                                 {% else %}
                                     <h6>You can only edit Your Review</h6>
