@@ -1,14 +1,19 @@
 {% extends 'base.html' %}
 {% block pageContent %}
-     <h5>Book Title: {{ book.title }}</h5>
-            <h5>Book Author: {{ book.author }}</h5>
+    <div class="row ">
+        <h4 style="margin: 0 30px 0 30px">
+            Title: {{ book.title }}</h4>
+        <h4 style="margin-right: 30px">
+            Author: {{ book.author }}</h4>
+        <h4 style="margin-right: 30px">
+            Publisher: {{ book.publisher }}</h4>
+    </div>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <button style="float: right"
-                    id="addGenreBtn"
                     class="btn btn-primary"
                     data-toggle="modal"
-                    data-target="#addGenreModal">Add Review
+                    data-target="#addBookReviewModal">Add Review
             </button>
         </div>
         <div class="card-body">
@@ -35,31 +40,95 @@
                     <tbody>
                     {% for review in reviews %}
                         <tr>
-                             <td>{{ loop.index }}</td>
+                            <td>{{ loop.index }}</td>
                             <td>{{ review.rating }}</td>
                             <td>{{ review.review }}</td>
                             <td>{{ review.user.username }}</td>
                             <td>
-                                <button class="btn btn-primary"
-                                        data-toggle="modal"
-                                        data-target="#editGenreModal"
-                                        data-id="{{ review.id }}"
-                                        data-rating="{{ review.rating }}"
-                                        data-review="{{ review.review }}"
-                                        data-user="{{ review.user.username }}">
-                                    Edit
-                                </button>
-                                <button class="btn btn-danger"
-                                        data-toggle="modal"
-                                        data-target="#deleteGenreModal"
-                                        data-id="{{ review.id }}">
-                                    Delete
-                                </button>
+                                {% if current_user.id == review.users_id %}
+                                    <button class="btn btn-primary btn-circle"
+                                            data-toggle="modal"
+                                            data-target="#editBookReviewModal"
+                                            data-id="{{ review.id }}"
+                                            data-rating="{{ review.rating }}"
+                                            data-review="{{ review.review }}"
+                                            data-book_id="{{ review.books_id }}"
+                                            data-user_id="{{ review.user.id }}">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-danger btn-circle"
+                                            data-toggle="modal"
+                                            data-target="#deleteBookReviewModal"
+                                            data-id="{{ review.id }}">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                {% else %}
+                                    <h6>You can only edit Your Review</h6>
+                                {% endif %}
                             </td>
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Book Review Modal-->
+    <div class="modal fade" id="addBookReviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Book Review</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" data-book="">
+                    {% include 'reviews/add_review_form.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Edit Book Review Modal-->
+    <div class="modal fade" id="editBookReviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Book Review</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" data-book="">
+                    {% include 'reviews/edit_review_form.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Book Review Modal-->
+    <div class="modal fade" id="deleteBookReviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete Book </h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete this review?</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="">Delete</a>
+                </div>
             </div>
         </div>
     </div>

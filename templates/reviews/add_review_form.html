@@ -1,0 +1,26 @@
+<form id="bookReviewAddForm" action="{{ url_for('reviews.create') }}" method="POST">
+    <input hidden name="users_id" id="users_id" value="{{ users_id }}">
+    <input hidden name="books_id" id="books_id" value="{{ books_id }}">
+    <div class="mb-3">
+        <label for="rating">Rating</label>
+        <select class="custom-select d-block w-100" id="rating" name="rating" required>
+            <option value="">Choose...</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <div class="invalid-feedback">
+            Please provide a valid rating.
+        </div>
+    </div>
+    <div class="mb-3">
+        <textarea class="form-control" rows="4"
+                  required
+                  name="review" id="review"
+                  aria-describedby="review"
+                  placeholder="Book Review"></textarea>
+    </div>
+    <button style="float: right" type="submit" class="btn btn-primary">Submit</button>
+</form>

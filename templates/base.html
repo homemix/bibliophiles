@@ -274,6 +274,27 @@
             })
         })
 
+        $('#editBookReviewModal').on('show.bs.modal', function (event) {
+            let button = $(event.relatedTarget);
+            let reviewId = button.data('id');
+            let rating = button.data('rating');
+            let review = button.data('review');
+            let book_id = button.data('book_id');
+            let user_id = button.data('user_id');
+
+            $('#editBookReviewModal').find('.modal-body #bookReviewEditForm #reviewId').val(reviewId);
+            $('#editBookReviewModal').find('.modal-body #bookReviewEditForm #users_id').val(user_id);
+            $('#editBookReviewModal').find('.modal-body #bookReviewEditForm #books_id').val(book_id);
+            $('#editBookReviewModal').find('.modal-body #bookReviewEditForm #rating').val(rating);
+            $('#editBookReviewModal').find('.modal-body #bookReviewEditForm #review').val(review);
+        })
+         $('#deleteBookReviewModal').on('show.bs.modal', function (event) {
+            let button = $(event.relatedTarget);
+            let reviewId = button.data('id');
+            let modal = $(this);
+            modal.find('.modal-footer a').attr('href', '/reviews/delete/' + reviewId);
+        });
+
     });
 
 </script>
