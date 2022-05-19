@@ -1,0 +1,15 @@
+<form id="userUpdateForm" action="{{url_for('users.edit') }}" method="POST">
+    <input type="hidden" name="user_id" id="user_id">
+    <div class="mb-3">
+        <select class="form-select form-control"
+                aria-label="Default select example"
+                required
+                id="usertype_id" name="usertype_id">
+            <option disabled value="">Select User Type</option>
+            {% for user_type in user_types %}
+                <option value="{{ user_type.user_id }}">{{ user_type.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button style="float: right" type="submit" class="btn btn-primary">Update User</button>
+</form>

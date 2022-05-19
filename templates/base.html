@@ -12,7 +12,7 @@
     <title>Bibliophiles</title>
 
     <!-- Custom fonts for this template-->
-      <link rel="icon" type="image/x-icon" href="{{ url_for('static',filename="img/undraw_profile_1.svg") }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static',filename="img/undraw_profile_1.svg") }}">
     <link href="{{ url_for('static', filename='vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet"
           type="text/css">
     <link
@@ -94,7 +94,7 @@
                                 Profile
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item"  data-toggle="modal" data-target="#logoutModal">
+                            <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Logout
                             </a>
@@ -261,8 +261,20 @@
             })
         })
 
-    });
+        $('#updateUserModal').on('show.bs.modal', function (event) {
+            let button = $(event.relatedTarget);
+            let userId = button.data('id');
+            let url = '/users/show/' + userId;
+            $.ajax({
+                url: url,
+                type: 'GET',
+                success: function (data) {
+                    $('#updateUserModal').find('.modal-body #userUpdateForm #user_id').val(data.id);
+                }
+            })
+        })
 
+    });
 
 </script>
 </body>

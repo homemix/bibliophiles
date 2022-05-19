@@ -12,7 +12,7 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(100), nullable=False)
     password = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(45), nullable=False)
-    reset_password=db.Column(db.Integer, default=0)
+    reset_password = db.Column(db.Integer, default=0)
     usertype_id = db.Column(db.ForeignKey('user_types.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False,
                             index=True)
 
@@ -27,3 +27,12 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         """UserTypes File representation"""
         return str(vars(User))
+
+    def serialize(self):
+        """serialize user"""
+        return {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email,
+            'usertype_id': self.usertype_id
+        }
