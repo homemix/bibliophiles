@@ -1,9 +1,10 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for,jsonify
+from flask import Blueprint, render_template, request, flash, redirect, url_for, jsonify
 
 from models.User import User
 from models.UserType import UserType
 from flask_login import login_required
 from models.database import db
+from models.Review import Review
 
 users = Blueprint('users', __name__)
 page_title = 'Users'
@@ -45,3 +46,16 @@ def edit():
     else:
         flash('Error updating user', 'danger')
         return redirect(url_for('users.index'))
+
+
+@users.route('/my_profile/<int:user_id>')
+@login_required
+def my_profile(user_id):
+    user = User.query.get_or_404(user_id)
+    # get all reviews
+    my_reviews= Review.query.filter_by(users_id=user_id).count()
+    if user:
+        return render_template('users/my_profile.html',
+                               page_title="My Profile",
+                               my_reviews=my_reviews,
+                               user=user)
