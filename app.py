@@ -14,6 +14,7 @@ from blueprints.UserTypeBluePrint import userTypes
 from blueprints.ReviewBluprint import reviews
 from blueprints.UsersBlueprint import users
 from blueprints.AuthBlueprint import auth
+from blueprints.DashboardBlueprint import dashboard
 
 from flask_login import LoginManager
 
@@ -58,6 +59,7 @@ app.register_blueprint(userTypes, url_prefix='/userTypes')
 app.register_blueprint(reviews, url_prefix='/reviews')
 app.register_blueprint(users, url_prefix='/users')
 app.register_blueprint(auth, url_prefix='/auth')
+app.register_blueprint(dashboard, url_prefix='/dashboard')
 
 login_manager = LoginManager()
 login_manager.init_app(app)
