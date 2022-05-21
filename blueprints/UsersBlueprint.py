@@ -5,6 +5,7 @@ from models.UserType import UserType
 from flask_login import login_required
 from models.database import db
 from models.Review import Review
+from models.Book import Book
 
 users = Blueprint('users', __name__)
 page_title = 'Users'
@@ -54,8 +55,10 @@ def my_profile(user_id):
     user = User.query.get_or_404(user_id)
     # get all reviews
     my_reviews= Review.query.filter_by(users_id=user_id).count()
+    books_added = Book.query.filter_by(id=Book.id).count()
     if user:
         return render_template('users/my_profile.html',
                                page_title="My Profile",
                                my_reviews=my_reviews,
+                               books_added = books_added,
                                user=user)
