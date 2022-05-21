@@ -7,6 +7,7 @@ from utils.mail import mail
 from flask_mail import Message
 from utils.randomPassword import random_password
 
+
 auth = Blueprint('auth', __name__)
 
 
