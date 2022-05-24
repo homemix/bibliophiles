@@ -5,3 +5,4 @@ flask-login
 Werkzeug
 Flask-Mail
 Flask-Migrate
+mysqlclient
