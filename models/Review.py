@@ -23,3 +23,13 @@ class Review(db.Model):
 
     def __repr__(self):
         return vars(Review)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'rating': self.rating,
+            'review': self.review,
+            'users_id': self.users_id,
+            'books_id': self.books_id,
+            'books': self.books.serialize_reviews(),
+        }

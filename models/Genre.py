@@ -26,3 +26,4 @@ class Genre(db.Model):
             'name': self.name,
             'description': self.description
         }
+

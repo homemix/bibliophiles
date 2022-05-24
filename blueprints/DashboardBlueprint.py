@@ -1,3 +1,5 @@
+import json
+
 from flask import Blueprint, render_template
 from models.User import User
 from models.Review import Review
@@ -21,3 +23,15 @@ def index():
                            all_reviews=all_reviews,
                            all_genres=all_genres,
                            page_title=page_title)
+
+
+@dashboard.route('/book_review')
+def book_review():
+    book_reviews = Review.query.all()
+    return json.dumps([u.to_dict() for u in book_reviews])
+
+
+@dashboard.route('/book_genre')
+def book_genre():
+    book_genres = Genre.query.all()
+    return json.dumps([u.serialize() for u in book_genres])

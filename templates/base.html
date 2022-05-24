@@ -89,7 +89,7 @@
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                              aria-labelledby="userDropdown">
-                            <a class="dropdown-item"  href="{{ url_for('users.my_profile',user_id=current_user.id) }}">
+                            <a class="dropdown-item" href="{{ url_for('users.my_profile',user_id=current_user.id) }}">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Profile
                             </a>
@@ -188,8 +188,8 @@
 <script src="{{ url_for('static',filename="vendor/datatables/dataTables.bootstrap4.min.js") }}"></script>
 <script src="{{ url_for('static',filename="js/demo/datatables-demo.js") }}"></script>
 
-<script src="{{ url_for('static',filename="js/demo/chart-area-demo.js") }}"></script>
-<script src="{{ url_for('static',filename="js/demo/chart-pie-demo.js") }}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
 {# custom scripts #}
 
 <script type="text/javascript">
@@ -290,15 +290,41 @@
             $('#editBookReviewModal').find('.modal-body #bookReviewEditForm #rating').val(rating);
             $('#editBookReviewModal').find('.modal-body #bookReviewEditForm #review').val(review);
         })
-         $('#deleteBookReviewModal').on('show.bs.modal', function (event) {
+        $('#deleteBookReviewModal').on('show.bs.modal', function (event) {
             let button = $(event.relatedTarget);
             let reviewId = button.data('id');
             let modal = $(this);
             modal.find('.modal-footer a').attr('href', '/reviews/delete/' + reviewId);
         });
 
+
     });
 
+</script>
+
+<script>
+    $.ajax({
+        url: 'dashboard/book_review',
+        type: 'GET',
+        success: function (data) {
+            books_data = JSON.parse(data)
+            books = books_data.flatMap(({books}) => books.title)
+            ratings = books_data.flatMap(({rating}) => rating)
+            new Chart(document.getElementById("myAreaChart"), {
+                type: 'bar',
+                data: {
+                    labels: books,
+                    datasets: [{
+                        label: 'Book Ratings',
+                        data: ratings,
+                    }]
+                },
+                options: {
+                    legend: {display: true},
+                },
+            });
+        }
+    })
 </script>
 </body>
 

@@ -36,3 +36,13 @@ class Book(db.Model):
             'published_date': self.published_date,
             'publisher': self.publisher
         }
+
+    def serialize_reviews(self):
+        """Serialize a book"""
+        return {
+            'id': self.id,
+            'title': self.title,
+            'author': self.author,
+            'genre_id': self.genre_id,
+            'publisher': self.publisher
+        }
