@@ -1,4 +1,3 @@
-alx
 Bibliophiles Book Review.
  =
 <h2>Introduction</h2>
