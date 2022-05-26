@@ -80,5 +80,3 @@ Book Reviews API allows developers to access book reviews data to help other web
  
  https://homemix.github.io/bibliophiles/
 
-
-![alt text](http://github.com/homemix/bibliophiles/to/Book Review 1.png)
