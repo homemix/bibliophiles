@@ -55,10 +55,10 @@ def my_profile(user_id):
     user = User.query.get_or_404(user_id)
     # get all reviews
     my_reviews= Review.query.filter_by(users_id=user_id).count()
-    books_added = Book.query.filter_by(id=Book.id).count()
+    books_available = Book.query.filter_by(id=Book.id).count()
     if user:
         return render_template('users/my_profile.html',
                                page_title="My Profile",
                                my_reviews=my_reviews,
-                               books_added = books_added,
+                               books_available = books_available,
                                user=user)
