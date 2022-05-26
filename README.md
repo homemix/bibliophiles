@@ -1,9 +1,22 @@
-
 Bibliophiles Book Review.
-=
-
-<h2>Overview</h2>
+ =
+<h2>Introduction</h2>
 This web site features users to search, leave reviews for individual books, andsee the reviews made by other people. In addition, users are able to query for book details and book reviews programmatically via website's API.
+
+<a href="https://homemix.github.io/bibliophiles/ "> link to deployed site </a>
+
+<h2>Installation</h2>
+
+Clone the repository
+In your terminal window, navigate into the project
+
+Run pip3 install -r requirements.txt to make sure all of the necessary Python packages (Flask, SQLAlchemy and others) are installed
+Create a .env file in the root of the directory to setup database and secret_key
+
+run flask db migrate --upgrade to update tables in your database
+
+run flask app
+
 
 <h2>Usage</h2>
 
@@ -15,11 +28,43 @@ This web site features users to search, leave reviews for individual books, ands
 
 * Create a new review for the selected book
 
+<h2>Contributing</h2>
+Contributions are always welcome!
 
-Installation
-=
+<h2>Related projects</h2>
+<p>Goodreads link:https://www.goodreads.com/</p>
+<ul>Similarities:
+    <li> Books listing and their details.
+    <li>Star ratings
+    <li> community reviews
+</ul>
+<ul>Differences:
+    <li>Addition of new books
+    <li>Graphical representation of information in charts for dashboard.
+</ul>
 
-           pip install SQLAlchemy
+<p>BookPage link:https://www.bookpage.com/</p>
+<ul>Similarities:
+    <li>Books listing and their details.
+</ul>
+<ul>Differences:
+    <li>Addition of new books
+    <li>Professional reviews
+    <li>Star ratings
+</ul>
+
+<h2>Author(s)</h2>
+
+<li>Meaza Lemma <a href="https://github.com/MahiET">Github</a>
+
+<li>Kennedy wambua <a href= "https://github.com/homemix">Github</a>
+
+<li>Meshack Mutune <a href="https://github.com/mesh-254">Github</a>
+
+<h2>Licensing</h2>
+
+To the extent possible under law,  contributers have waived all copyright and related or neighboring rights to this work.
+
 
 Technologies Tools Used:
 =
@@ -48,7 +93,6 @@ Technologies Tools Used:
 * Gunicorn
 
 Features of the Applications
-=
 
 * Login Page
 
@@ -64,19 +108,5 @@ Features of the Applications
 
 * View Book Genres
 
-API Access
-=
-Book Reviews API allows developers to access book reviews data to help other websites or applications that deal with books be more personal, social, and engaging.
 
-<h2>API Methods</h2>
-
-     users_id = request.form.get('users_id')
-
-           books_id = request.form.get('books_id')
-
-           rating = request.form.get('rating')
-
-           review = request.form.get('review')
- 
- https://homemix.github.io/bibliophiles/
 
