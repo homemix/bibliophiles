@@ -52,8 +52,9 @@ Contributions are always welcome!
     *Graphical representation of information in charts for dashboard.
 
 <p>BookPage link:https://www.bookpage.com/</p>
-*Similarities:
-    *Books listing and their details.
+<ul>Similarities:
+    <li>*Books listing and their details.
+</ul>
 *Differences:
     *Addition of new books
     *Professional reviews
