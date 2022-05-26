@@ -7,7 +7,6 @@ from utils.mail import mail
 from flask_mail import Message
 from utils.randomPassword import random_password
 
-
 auth = Blueprint('auth', __name__)
 
 
@@ -73,6 +72,12 @@ def register_post():
     if password != confirm_password:
         flash('Passwords do not match', 'danger')
         return redirect(url_for('auth.register'))
+
+    # check the password or confirm password length is less than 4
+    if len(password) < 4 or len(confirm_password) < 4:
+        flash('Password must be at least 4 characters', 'danger')
+        return redirect(url_for('auth.register'))
+
     # check if user already exists in database by email or username
     user = User.query.filter_by(username=username).first()
     if user:
