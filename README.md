@@ -70,10 +70,12 @@ Book Reviews API allows developers to access book reviews data to help other web
 
 <h2>API Methods</h2>
 
-  users_id = request.form.get('users_id')
-      books_id = request.form.get('books_id')
-      rating = request.form.get('rating')
-      review = request.form.get('review')
- 
+     users_id = request.form.get('users_id')
 
-link:https://homemix.github.io/bibliophiles/
+           books_id = request.form.get('books_id')
+
+           rating = request.form.get('rating')
+
+           review = request.form.get('review')
+ 
+ https://homemix.github.io/bibliophiles/
