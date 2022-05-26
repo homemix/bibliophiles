@@ -6,7 +6,8 @@ This web site features users to search, leave reviews for individual books, ands
 
 <a href="https://homemix.github.io/bibliophiles/ "> link to deployed site </a>
 
-author(s)
+<h2>author(s)</h2>
+
 Meaza Lemma[github](https://github.com/MahiET)
 
 Kennedy wambua - [Github](https://github.com/homemix) 
@@ -27,10 +28,7 @@ run flask db migrate --upgrade to update tables in your database
 run flask app
 
 
-
-
 <h2>Usage</h2>
-=
 
 * See all books with their Title, Genre, Book Cover
 
@@ -44,22 +42,22 @@ run flask app
 Contributions are always welcome!
 
 <h2>Related projects</h2>
-Goodreads link:https://www.goodreads.com/
-Similarities:
-Books listing and their details.
-Star ratings
-community reviews
-	Differences:
-Addition of new books
-Graphical representation of information in charts for dashboard.
+<p>Goodreads link:https://www.goodreads.com/</p>
+*Similarities:
+    * Books listing and their details.
+    * Star ratings
+    *community reviews
+*Differences:
+    *Addition of new books
+    *Graphical representation of information in charts for dashboard.
 
-	BookPage link:https://www.bookpage.com/
-Similarities:
-Books listing and their details.
-	Differences:
-Addition of new books
-Professional reviews
-Star ratings
+<p>BookPage link:https://www.bookpage.com/</p>
+*Similarities:
+    *Books listing and their details.
+*Differences:
+    *Addition of new books
+    *Professional reviews
+    *Star ratings
 
 
 
@@ -95,7 +93,6 @@ Technologies Tools Used:
 * Gunicorn
 
 Features of the Applications
-=
 
 * Login Page
 
@@ -111,10 +108,5 @@ Features of the Applications
 
 * View Book Genres
 
-API Access
-=
 
-
-
-<h1>API Methods</h1>
 
