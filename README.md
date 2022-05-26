@@ -6,15 +6,6 @@ This web site features users to search, leave reviews for individual books, ands
 
 <a href="https://homemix.github.io/bibliophiles/ "> link to deployed site </a>
 
-<h2>author(s)</h2>
-
-Meaza Lemma[github](https://github.com/MahiET)
-
-Kennedy wambua - [Github](https://github.com/homemix) 
-
-Meshack Mutune - [Github](https://github.com/mesh-254)
-
-
 <h2>Installation</h2>
 
 Clone the repository
@@ -43,24 +34,33 @@ Contributions are always welcome!
 
 <h2>Related projects</h2>
 <p>Goodreads link:https://www.goodreads.com/</p>
-*Similarities:
-    * Books listing and their details.
-    * Star ratings
-    *community reviews
-*Differences:
-    *Addition of new books
-    *Graphical representation of information in charts for dashboard.
+<ul>Similarities:
+    <li> Books listing and their details.
+    <li>Star ratings
+    <li> community reviews
+</ul>
+<ul>Differences:
+    <li>Addition of new books
+    <li>Graphical representation of information in charts for dashboard.
+</ul>
 
 <p>BookPage link:https://www.bookpage.com/</p>
 <ul>Similarities:
-    <li>*Books listing and their details.
+    <li>Books listing and their details.
 </ul>
-*Differences:
-    *Addition of new books
-    *Professional reviews
-    *Star ratings
+<ul>Differences:
+    <li>Addition of new books
+    <li>Professional reviews
+    <li>Star ratings
+</ul>
 
+<h2>Author(s)</h2>
 
+<li>Meaza Lemma <a href="https://github.com/MahiET">Github</a>
+
+<li>Kennedy wambua <a href= "https://github.com/homemix">Github</a>
+
+<li>Meshack Mutune <a href="https://github.com/mesh-254">Github</a>
 
 <h2>Licensing</h2>
 
