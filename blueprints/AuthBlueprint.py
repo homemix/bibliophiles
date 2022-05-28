@@ -46,12 +46,12 @@ def login_post():
     remember = True if request.form.get('remember') else False
 
     user = User.query.filter_by(username=username).first()
-    if user.reset_password == 1:
-        flash('Please enter new password', 'info')
-        return redirect(url_for('auth.new_password', user_id=user.id))
     if not user or not check_password_hash(user.password, password):
         flash('Please check your login details and try again.', 'danger')
         return redirect(url_for('auth.login'))
+    if user.reset_password == 1:
+        flash('Please enter new password', 'info')
+        return redirect(url_for('auth.new_password', user_id=user.id))
     login_user(user, remember=remember)
     flash('You have successfully logged in', 'success')
     return redirect(url_for('books.index'))
